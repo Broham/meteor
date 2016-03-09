@@ -502,7 +502,7 @@ Meteor.methods({forgotPassword: function (options) {
 
   var user = Accounts.findUserByEmail(options.email);
   if (!user)
-    throw new Meteor.Error(403, "User not found");
+    return
 
   const emails = _.pluck(user.emails || [], 'address');
   const caseSensitiveEmail = _.find(emails, email => {
